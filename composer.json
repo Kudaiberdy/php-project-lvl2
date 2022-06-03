@@ -1,0 +1,12 @@
+{
+    "name": "hexlet/code",
+    "description": "the package defines the difference between two files",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Kudaiberdy",
+            "email": "kudaiberdy.shagirov@gmail.com"
+        }
+    ],
+    "require": {}
+}
