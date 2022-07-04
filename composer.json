@@ -8,5 +8,18 @@
             "email": "kudaiberdy.shagirov@gmail.com"
         }
     ],
-    "require": {}
+    "autoload": {
+        "files": [
+            "src/runner.php"
+        ]
+    },
+    "bin": [
+        "bin/gendiff"
+    ],
+    "require": {
+        "docopt/docopt": "^1.0"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^6.1"
+    }
 }
