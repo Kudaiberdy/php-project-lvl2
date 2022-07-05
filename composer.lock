@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1c67d0c9e286e65cb3c67014379d4a0",
+    "content-hash": "204c9a9931f793c9b848dcf84a9e8f4e",
     "packages": [
         {
             "name": "docopt/docopt",
@@ -55,9 +55,7 @@
                 "source": "https://github.com/docopt/docopt.php/tree/1.0.4"
             },
             "time": "2019-12-03T02:48:46+00:00"
-        }
-    ],
-    "packages-dev": [
+        },
         {
             "name": "symfony/polyfill-mbstring",
             "version": "v1.26.0",
@@ -228,8 +226,63 @@
                 }
             ],
             "time": "2022-05-21T13:34:40+00:00"
+        },
+        {
+            "name": "tightenco/collect",
+            "version": "v9.16.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tighten/collect.git",
+                "reference": "c0cfde437006f58e00539300a7d655eb55e4b536"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tighten/collect/zipball/c0cfde437006f58e00539300a7d655eb55e4b536",
+                "reference": "c0cfde437006f58e00539300a7d655eb55e4b536",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0",
+                "symfony/var-dumper": "^3.4 || ^4.0 || ^5.0 || ^6.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "nesbot/carbon": "^2.23.0",
+                "phpunit/phpunit": "^8.3"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Collect/Support/helpers.php",
+                    "src/Collect/Support/alias.php"
+                ],
+                "psr-4": {
+                    "Tightenco\\Collect\\": "src/Collect"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "Collect - Illuminate Collections as a separate package.",
+            "keywords": [
+                "collection",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/tighten/collect/issues",
+                "source": "https://github.com/tighten/collect/tree/v9.16.0"
+            },
+            "time": "2022-06-06T21:05:56+00:00"
         }
     ],
+    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],

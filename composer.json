@@ -10,13 +10,15 @@
     ],
     "autoload": {
         "files": [
-            "src/runner.php"
+            "src/runner.php",
+            "src/jsonDiffGen.php"
         ]
     },
     "bin": [
         "bin/gendiff"
     ],
     "require": {
+        "tightenco/collect": "^9.16",
         "docopt/docopt": "^1.0"
     },
     "require-dev": {
