@@ -4,4 +4,4 @@
 ### Examle of pakage operaion:
 
 
-[![asciicast](https://asciinema.org/a/qRwHS3fg8bVF6vyCS7NqIhnmq.svg)](https://asciinema.org/a/hrKR8EmeEsBDhCveHXxkM7xfm)
+[![asciicast](https://asciinema.org/a/qRwHS3fg8bVF6vyCS7NqIhnmq.svg)](https://asciinema.org/a/qRwHS3fg8bVF6vyCS7NqIhnmq)
