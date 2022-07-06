@@ -1,7 +1,8 @@
 <?php
+
 namespace Gendiff\Cli;
-use function Gendiff\JsonDiffer\getJsonDiff;
-use Docopt;
+
+use function Gendiff\DiffGenerator\getJsonDiff;
 
 function run()
 {
@@ -18,7 +19,7 @@ function run()
 
         DOC;
 
-    $args = Docopt::handle($doc);
+    $args = \Docopt::handle($doc);
     $filePath1 = $args['<firstFile>'];
     $filePath2 = $args['<secondFile>'];
     $format = $args['--format'];

@@ -1,6 +1,6 @@
 <?php
 
-namespace Gendiff\JsonDiffer;
+namespace Gendiff\DiffGenerator;
 
 function convertBoolToStr($arr)
 {
@@ -36,7 +36,7 @@ function getJsonDiff($pathOne, $pathTwo)
 
     $typeNode = [
         'unchanged' => fn($node) => "   {$node['key']}: {$node['value']}\n",
-        'changed' => fn($node) => " - {$node['key']}: {$node['fileOne']} \n + {$node['key']}: {$node['fileTwo']}\n",
+        'changed' => fn($node) => " - {$node['key']}: {$node['fileOne']}\n + {$node['key']}: {$node['fileTwo']}\n",
         'added' => fn($node) => " + {$node['key']}: {$node['value']}\n",
         'deleted' => fn($node) => " - {$node['key']}: {$node['value']}\n"
     ];
@@ -44,10 +44,10 @@ function getJsonDiff($pathOne, $pathTwo)
     foreach ($diff as $item) {
         $res[] = $typeNode[$item['type']]($item);
     }
+
+//    var_dump();
     return implode('', $res);
 }
-
-
 
 function getTypes($key, $fileOne, $fileTwo)
 {
@@ -66,5 +66,3 @@ function getTypes($key, $fileOne, $fileTwo)
         return ['type' => 'changed', 'key' => $key, 'fileOne' => $fileOne[$key], 'fileTwo' => $fileTwo[$key]];
     }
 }
-
-
