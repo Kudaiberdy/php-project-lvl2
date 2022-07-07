@@ -10,8 +10,10 @@
     ],
     "autoload": {
         "files": [
-            "src/runner.php",
-            "src/DiffGenerator.php"
+            "src/Runner.php",
+            "src/DiffGenerator.php",
+            "src/Parser.php",
+            "src/DiffBuilder.php"
         ]
     },
     "bin": [
@@ -19,6 +21,7 @@
     ],
     "require": {
         "tightenco/collect": "^9.16",
+        "symfony/yaml": "^6.1",
         "docopt/docopt": "^1.0"
     },
     "require-dev": {

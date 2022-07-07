@@ -2,6 +2,8 @@
 
 namespace Gendiff\DiffGenerator;
 
+use function Gendiff\Parser\parseFile;
+
 function convertBoolToStr($arr)
 {
     $convertedValues = [];
@@ -15,41 +17,22 @@ function convertBoolToStr($arr)
     return $convertedValues;
 }
 
-function getJsonDiff($pathOne, $pathTwo)
+function getDifference($pathOne, $pathTwo)
 {
-    if (file_exists($pathOne) === false || file_exists($pathTwo) === false) {
-        return false;
-    }
-
-    $fileOne = convertBoolToStr(json_decode(file_get_contents($pathOne), true));
-    $fileTwo = convertBoolToStr(json_decode(file_get_contents($pathTwo), true));
+    $fileOne = convertBoolToStr(parseFile($pathOne));
+    $fileTwo = convertBoolToStr(parseFile($pathTwo));
 
     $keys = collect(array_keys($fileOne))->merge(array_keys($fileTwo))->unique()->sort();
 
-    $diff = $keys->reduce(function ($acc, $key) use ($fileOne, $fileTwo) {
-        $acc->push(getTypes($key, $fileOne, $fileTwo));
+    $nodes = $keys->reduce(function ($acc, $key) use ($fileOne, $fileTwo) {
+        $acc[] = getTypesOfNodes($key, $fileOne, $fileTwo);
         return $acc;
-    }, collect())
-        ->all();
-
-    $res = [];
-
-    $typeNode = [
-        'unchanged' => fn($node) => "   {$node['key']}: {$node['value']}\n",
-        'changed' => fn($node) => " - {$node['key']}: {$node['fileOne']}\n + {$node['key']}: {$node['fileTwo']}\n",
-        'added' => fn($node) => " + {$node['key']}: {$node['value']}\n",
-        'deleted' => fn($node) => " - {$node['key']}: {$node['value']}\n"
-    ];
-
-    foreach ($diff as $item) {
-        $res[] = $typeNode[$item['type']]($item);
-    }
-
-//    var_dump();
-    return implode('', $res);
+    }, []);
+//    dump($nodes);
+    return $nodes;
 }
 
-function getTypes($key, $fileOne, $fileTwo)
+function getTypesOfNodes($key, $fileOne, $fileTwo)
 {
     if (array_key_exists($key, $fileOne) === false) {
         return ['type' => 'added', 'key' => $key, 'value' => $fileTwo[$key]];
