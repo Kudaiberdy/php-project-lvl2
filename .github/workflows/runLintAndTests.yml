@@ -13,6 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - name: Setup
         uses: hexlet/project-action@release
         with:
@@ -21,5 +22,5 @@ jobs:
         run: make install
       - name: Run linter
         run: make lint
-      -name: Run tests
+      - name: Run tests
         run: make test
