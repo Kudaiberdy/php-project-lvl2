@@ -1,9 +1,17 @@
-language: PHP
-PHP:
-  - PHP
+language: php
+php:
+  - nightly
+env:
+  global:
+    - CC_TEST_REPORTER_ID=8150d01e08018fb9359239bc89d825dd1116c38b639e1ea57aa6f0657969e67a
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
   - make lint
-  - make test
   - make test-coverage
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 notifications:
   email: false

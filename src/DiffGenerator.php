@@ -28,7 +28,6 @@ function getDifference($pathOne, $pathTwo)
         $acc[] = getTypesOfNodes($key, $fileOne, $fileTwo);
         return $acc;
     }, []);
-//    dump($nodes);
     return $nodes;
 }
 
