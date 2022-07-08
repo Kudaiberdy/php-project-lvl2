@@ -1,0 +1,9 @@
+language: PHP
+PHP:
+  - PHP
+script:
+  - make lint
+  - make test
+  - make test-coverage
+notifications:
+  email: false
