@@ -11,6 +11,6 @@ if (file_exists($autoloadPathLocal)) {
     require_once $autoloadPathGlobal;
 }
 
-use function Gendiff\Runner\run;
+use function Gendiff\Cli\runCli;
 
-run();
+runCli();

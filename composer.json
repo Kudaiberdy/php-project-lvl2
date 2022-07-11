@@ -10,10 +10,13 @@
     ],
     "autoload": {
         "files": [
+            "src/CLi.php",
             "src/Runner.php",
             "src/DiffGenerator.php",
             "src/Parser.php",
-            "src/DiffBuilder.php"
+            "src/DiffBuilder.php",
+            "src/Formatters/JsonStringifyFormat.php",
+            "src/Formatters/JsonFormat.php"
         ]
     },
     "bin": [

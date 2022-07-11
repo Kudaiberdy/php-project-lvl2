@@ -2,19 +2,15 @@
 
 namespace Gendiff\DiffBuilder;
 
-function buildDiff($arrayOfNodes)
-{
-    $res = [];
+use function Gendiff\Formatters\JsonStringifyFormat\stringify;
+use function Gendiff\Formatters\JsonFormat\getDiffJsonFormat;
 
+function buildDiff($arrayOfNodes, $format): string
+{
     $typeNode = [
-        'unchanged' => fn($node) => "   {$node['key']}: {$node['value']}\n",
-        'changed' => fn($node) => " - {$node['key']}: {$node['fileOne']}\n + {$node['key']}: {$node['fileTwo']}\n",
-        'added' => fn($node) => " + {$node['key']}: {$node['value']}\n",
-        'deleted' => fn($node) => " - {$node['key']}: {$node['value']}\n"
+        'basic' => fn($arrayOfNodes) => stringify($arrayOfNodes),
+        'json' => fn($arrayOFNodes) => getDiffJsonFormat($arrayOfNodes)
     ];
 
-    foreach ($arrayOfNodes as $node) {
-        $res[] = $typeNode[$node['type']]($node);
-    }
-    return implode('', $res);
+    return $typeNode[$format]($arrayOfNodes);
 }

@@ -8,14 +8,12 @@ function parseFile($path)
 {
     $pathInfo = pathinfo($path);
     $realpath = realpath($path);
-//    dump(__DIR__);
     if (!file_exists($realpath)) {
         return false;
     }
 
-
     $fileExtension = $pathInfo['extension'];
-    $fileExtension = $fileExtension === 'yml' ?: 'yaml';
+    $fileExtension = $fileExtension === 'yml' ? 'yaml' : $fileExtension;
     $data = file_get_contents($realpath);
 
     $extensionDispatcher = [
