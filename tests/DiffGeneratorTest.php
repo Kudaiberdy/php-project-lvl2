@@ -9,39 +9,44 @@ use function Gendiff\Runner\run;
 
 class DiffGeneratorTest extends TestCase
 {
-    public function testFlatFile()
+    /**
+     * @dataProvider additionProvider
+     */
+    public function testRecursiveFile($pathToFirstFile, $pathToSecondFile, $pathToExpect)
     {
-        $expect = file_get_contents(__DIR__ . '/fixtures/expected/expectedFlatDiff');
+        $expect = file_get_contents($pathToExpect);
         $actual = run(
-            __DIR__ . '/fixtures/flatFile1.json',
-            __DIR__ . '/fixtures/flatFile2.json',
+            $pathToFirstFile,
+            $pathToSecondFile,
             'basic'
         );
         $this->assertEquals($expect, $actual);
     }
 
-    public function testRecursiveFile()
+    public function additionProvider()
     {
-        $expect = file_get_contents(__DIR__ . '/fixtures/expected/expectedRecursiveDiff');
-        $actual = run(
-            __DIR__ . '/fixtures/recursiveFile1.json',
-            __DIR__ . '/fixtures/recursiveFile2.json',
-            'basic'
-        );
-        $this->assertEquals($expect, $actual);
-    }
+        return [
+            'jsonStringify1' => [
+                __DIR__ . "/fixtures/file1.json",
+                __DIR__ . "/fixtures/file2.json",
+                __DIR__ . "/fixtures/expected/expectedJsonStringify.txt"
+            ],
+            'jsonStringify2' => [
+                __DIR__ . "/fixtures/file1.yaml",
+                __DIR__ . "/fixtures/file2.yaml",
+                __DIR__ . "/fixtures/expected/expectedJsonStringify.txt"
+            ],
+            'jsonStringify3' => [
+                __DIR__ . "/fixtures/file1.yml",
+                __DIR__ . "/fixtures/file2.yml",
+                __DIR__ . "/fixtures/expected/expectedJsonStringify.txt"
+            ]
 
-    public function testParser()
-    {
-        $expect = [
-            "host" => "hexlet.io",
-            "timeout" => 50,
-            "proxy" => "123.234.53.22",
-            "follow" => false
         ];
-        $actual = parseFile(__DIR__ . '/fixtures/flatFile1.yaml');
-
-        $this->assertEquals($expect, $actual);
-        $this->assertFalse(parseFile('./wrong/path'));
+    }
+    public function testParserWrongPath()
+    {
+        $this->expectException(\Exception::class);
+        $actual = parseFile('/wrong/path');
     }
 }

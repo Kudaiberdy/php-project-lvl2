@@ -2,7 +2,7 @@
 
 namespace Gendiff\DiffGenerator;
 
-function convertBoolToStr($arr)
+function convertBoolToStr(array $arr): array
 {
     $convertedValues = [];
     foreach ($arr as $key => $value) {
@@ -17,7 +17,7 @@ function convertBoolToStr($arr)
     return $convertedValues;
 }
 
-function getDifference($arrayFirst, $arraySecond): array
+function getDifference(array $arrayFirst, array $arraySecond): array
 {
     $fileOne = convertBoolToStr($arrayFirst);
     $fileTwo = convertBoolToStr($arraySecond);

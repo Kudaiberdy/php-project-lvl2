@@ -10,7 +10,7 @@ function parseFile($path)
     $pathInfo = pathinfo($path);
     $realpath = realpath($path);
     if (!file_exists($realpath)) {
-        return new \Exception('Specified file not exists');
+        throw new \Exception("Specified files not exists\n");
     }
 
     $fileExtension = $pathInfo['extension'];

@@ -22,6 +22,13 @@ function runCli(): void
     $firstFile = $args['<firstFile>'];
     $secondFile = $args['<secondFile>'];
     $format = $args['--format'];
-    $result = run($firstFile, $secondFile, $format);
+    $result = '';
+
+    try {
+        $result = run($firstFile, $secondFile, $format);
+    } catch (\Exception $e) {
+        echo $e->getMessage();
+    }
+
     echo $result;
 }
