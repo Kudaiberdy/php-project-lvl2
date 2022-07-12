@@ -2,6 +2,7 @@
 
 namespace Gendiff\Parser;
 
+use mysql_xdevapi\Exception;
 use Symfony\Component\Yaml\Yaml;
 
 function parseFile($path)
@@ -9,7 +10,7 @@ function parseFile($path)
     $pathInfo = pathinfo($path);
     $realpath = realpath($path);
     if (!file_exists($realpath)) {
-        return false;
+        return new \Exception('Specified file not exists');
     }
 
     $fileExtension = $pathInfo['extension'];

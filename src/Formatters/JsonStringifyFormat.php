@@ -2,7 +2,7 @@
 
 namespace Gendiff\Formatters\JsonStringifyFormat;
 
-function stringNodeBuilder($key, $value, $indent, $depth, $signNode = ' '): string
+function buildString($key, $value, $indent, $depth, $signNode = ' '): string
 {
     $currentIndent = substr_replace(
         str_repeat($indent, $depth),
@@ -20,7 +20,7 @@ function stringNodeBuilder($key, $value, $indent, $depth, $signNode = ' '): stri
     }
 
     $res = collect($value)->map(fn($innerValue, $innerKey)
-        => stringNodeBuilder($innerKey, $innerValue, $indent, $depth + 1))
+        => buildString($innerKey, $innerValue, $indent, $depth + 1))
         ->all();
 
     return implode("\n", ["{$currentIndent}{$key}: {", ...$res, "{$bracketIndent}}"]);
@@ -32,15 +32,15 @@ function buildStringNodeByType($node, $tabIndent, $depth): string|array
 
     switch ($node['type']) {
         case 'unchanged':
-            return stringNodeBuilder($key, $node['value'], $tabIndent, $depth);
+            return buildString($key, $node['value'], $tabIndent, $depth);
         case 'added':
-            return stringNodeBuilder($key, $node['value'], $tabIndent, $depth, '+');
+            return buildString($key, $node['value'], $tabIndent, $depth, '+');
         case 'deleted':
-            return stringNodeBuilder($key, $node['value'], $tabIndent, $depth, '-');
+            return buildString($key, $node['value'], $tabIndent, $depth, '-');
         case 'changed':
             return [
-                stringNodeBuilder($key, $node['firstFile'], $tabIndent, $depth, '-'),
-                stringNodeBuilder($key, $node['secondFile'], $tabIndent, $depth, '+')
+                buildString($key, $node['firstFile'], $tabIndent, $depth, '-'),
+                buildString($key, $node['secondFile'], $tabIndent, $depth, '+')
             ];
     }
 }
