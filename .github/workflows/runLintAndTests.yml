@@ -13,26 +13,26 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Setup
-        uses: hexlet/project-action@release
         with:
-          hexlet-id: ${{ secrets.HEXLET_ID }}
+          fetch-depth: 0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
       - name: Install
         run: make install
       - name: Run linter
         run: make lint
       - name: Run tests
         run: make test
-      - name: Run test-coverage
-        run: make test-coverage
 
-      - name: Run Codeclimate test & publish code coverage
-        uses: paambaati/codeclimate-action@v2.6.0
-
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v3.0.0
         env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          CC_TEST_REPORTER_ID: 8150d01e08018fb9359239bc89d825dd1116c38b639e1ea57aa6f0657969e67a
         with:
           coverageCommand: make test-coverage
-          coverageLocations: ${{github.workplace}}/build/logs/clover.xml:clover
+          coverageLocations: ${{ github.workplace }}/build/logs/clover.xml:clover
           debug: true
