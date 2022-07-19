@@ -14,13 +14,13 @@ ___
 **PHP > v7.4**
 
 ___
-### Istall:
+### Install:
 #### Via cloning from the repository:
 ```shell
 git clone git@github.com:Kudaiberdy/php-project-lvl2.git
 ```
 
-#### Global install:
+#### Global:
 ```shell
 
 ```
