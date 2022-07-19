@@ -9,16 +9,20 @@ use function Gendiff\Runner\run;
 function runCli(): void
 {
     $doc = <<<DOC
-	Generate diff
-	Usage:
-	  gendiff (-h|--help)
-	  gendiff [--format <fmt>] <firstFile> <secondFile>
-	Options:
-	  -h --help                     Show this screen
-	  --format <fmt>                Report format [default: basic]
-	DOC;
+        Compares two configuration files and shows a difference.
+        
+        Usage:
+          gendiff (-h|--help)
+          gendiff (-v|--version)
+          gendiff [-f|--format <fmt>] <firstFile> <secondFile>
+          
+        Options:
+          -h --help                     Show this screen
+          -v --version                  Show version
+          -f --format <fmt>             Report format [default: stylish]
+        DOC;
 
-    $args = Docopt::handle($doc);
+    $args = Docopt::handle($doc, ['version' => 'gendiff version 1.0.0']);
     $firstFile = $args['<firstFile>'];
     $secondFile = $args['<secondFile>'];
     $format = $args['--format'];

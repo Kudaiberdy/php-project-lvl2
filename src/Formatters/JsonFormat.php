@@ -2,7 +2,7 @@
 
 namespace Gendiff\Formatters\JsonFormat;
 
-function getDiffJsonFormat($diff)
+function getDiffJsonFormat($diff): string
 {
     return json_encode($diff) . "\n";
 }

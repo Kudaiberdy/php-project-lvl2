@@ -2,7 +2,7 @@
 
 namespace Gendiff\Formatters\JsonStringifyFormat;
 
-function buildString($key, $value, $indent, $depth, $signNode = ' '): string
+function buildString(string $key, string|array $value, string $indent, int $depth, string $signNode = ' '): string
 {
     $currentIndent = substr_replace(
         str_repeat($indent, $depth),
@@ -26,7 +26,7 @@ function buildString($key, $value, $indent, $depth, $signNode = ' '): string
     return implode("\n", ["{$currentIndent}{$key}: {", ...$res, "{$bracketIndent}}"]);
 }
 
-function buildStringNodeByType($node, $tabIndent, $depth): string|array
+function buildStringNodeByType(string|array $node, string $tabIndent, int $depth): string|array
 {
     $key = $node['key'];
 
@@ -45,7 +45,7 @@ function buildStringNodeByType($node, $tabIndent, $depth): string|array
     }
 }
 
-function stringify($node): string
+function stringify(string|array $node): string
 {
     $baseIndent = '    ';
     $stringDiffBuilder = function ($nodes, $depth = 1) use (&$stringDiffBuilder, $baseIndent) {

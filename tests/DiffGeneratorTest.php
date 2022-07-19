@@ -29,19 +29,19 @@ class DiffGeneratorTest extends TestCase
             'jsonStringify1' => [
                 __DIR__ . "/fixtures/file1.json",
                 __DIR__ . "/fixtures/file2.json",
-                'basic',
+                'stylish',
                 __DIR__ . "/fixtures/expected/expectedJsonStringify.txt"
             ],
             'jsonStringify2' => [
                 __DIR__ . "/fixtures/file1.yaml",
                 __DIR__ . "/fixtures/file2.yaml",
-                'basic',
+                'stylish',
                 __DIR__ . "/fixtures/expected/expectedJsonStringify.txt"
             ],
             'jsonStringify3' => [
                 __DIR__ . "/fixtures/file1.yml",
                 __DIR__ . "/fixtures/file2.yml",
-                'basic',
+                'stylish',
                 __DIR__ . "/fixtures/expected/expectedJsonStringify.txt"
             ],
             'json1' => [

@@ -5,10 +5,10 @@ namespace Gendiff\DiffBuilder;
 use function Gendiff\Formatters\JsonStringifyFormat\stringify;
 use function Gendiff\Formatters\JsonFormat\getDiffJsonFormat;
 
-function buildDiff($arrayOfNodes, $format): string
+function buildDiff(array $arrayOfNodes, string|int $format): string
 {
     $typeNode = [
-        'basic' => fn($arrayOfNodes) => stringify($arrayOfNodes),
+        'stylish' => fn($arrayOfNodes) => stringify($arrayOfNodes),
         'json' => fn($arrayOFNodes) => getDiffJsonFormat($arrayOfNodes)
     ];
 
