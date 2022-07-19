@@ -11,6 +11,7 @@
 
 ___
 ### Require:
+**PHP > v7.4**
 
 ___
 ### Istall:
@@ -19,6 +20,15 @@ ___
 git clone git@github.com:Kudaiberdy/php-project-lvl2.git
 ```
 
+#### Global install:
+```shell
+
+```
+
+#### Like a package:
+```shell
+
+```
 ___
 ### Example of work:
 

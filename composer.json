@@ -1,7 +1,8 @@
 {
     "name": "hexlet/code",
-    "description": "the package defines the difference between two files",
+    "description": "this package defines the difference between two files json, yaml format",
     "type": "project",
+    "license": "proprietary",
     "authors": [
         {
             "name": "Kudaiberdy",
@@ -28,6 +29,7 @@
         "docopt/docopt": "^1.0"
     },
     "require-dev": {
+        "php": ">=7.4",
         "symfony/var-dumper": "^6.1",
         "phpunit/phpunit": "^9.5",
         "squizlabs/php_codesniffer": "^3.7"
