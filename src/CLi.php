@@ -25,7 +25,7 @@ function runCli(): void
     $args = Docopt::handle($doc, ['version' => 'gendiff version 1.0.0']);
     $firstFile = $args['<firstFile>'];
     $secondFile = $args['<secondFile>'];
-    $format = $args['--format'];
+    $format = $args['--format'][0];
     $result = '';
 
     try {
