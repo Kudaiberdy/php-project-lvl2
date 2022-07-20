@@ -20,15 +20,17 @@ ___
 git clone git@github.com:Kudaiberdy/php-project-lvl2.git
 ```
 
-#### Global:
+#### Via composer:
 ```shell
-
+composer create-project kudaiberdy/node_diff_generator
 ```
 
-#### Like a package:
-```shell
+[//]: # (#### Like a package:)
 
-```
+[//]: # (```shell)
+
+[//]: # ()
+[//]: # (```)
 ___
 ### Example of work:
 
