@@ -2,10 +2,14 @@
 
 namespace Gendiff\Parser;
 
-use mysql_xdevapi\Exception;
 use Symfony\Component\Yaml\Yaml;
 
-function parseFile($path)
+/**
+ * @param string $path
+ * @return array
+ * @throws \Exception
+ */
+function parseFile(string $path): array
 {
     $pathInfo = pathinfo($path);
     $realpath = realpath($path);

@@ -2,7 +2,11 @@
 
 namespace Gendiff\Formatters\Json;
 
-function getJsonFormat($diff): string
+/**
+ * @param array $diff
+ * @return string
+ */
+function getJsonFormat(array $nodes): string
 {
-    return json_encode($diff) . "\n";
+    return json_encode($nodes) . "\n";
 }

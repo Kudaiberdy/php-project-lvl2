@@ -2,6 +2,14 @@
 
 namespace Gendiff\Formatters\Stylish;
 
+/**
+ * @param string $key
+ * @param string|array $value
+ * @param string $indent
+ * @param int $depth
+ * @param string $signNode
+ * @return string
+ */
 function buildString(string $key, string|array $value, string $indent, int $depth, string $signNode = ' '): string
 {
     $currentIndent = substr_replace(
@@ -26,6 +34,12 @@ function buildString(string $key, string|array $value, string $indent, int $dept
     return implode("\n", ["{$currentIndent}{$key}: {", ...$res, "{$bracketIndent}}"]);
 }
 
+/**
+ * @param string|array $node
+ * @param string $tabIndent
+ * @param int $depth
+ * @return string|array
+ */
 function buildStringNodeByType(string|array $node, string $tabIndent, int $depth): string|array
 {
     $key = $node['key'];
@@ -45,7 +59,11 @@ function buildStringNodeByType(string|array $node, string $tabIndent, int $depth
     }
 }
 
-function getStylishFormat(string|array $node): string
+/**
+ * @param string|array $node
+ * @return string
+ */
+function getStylishFormat(string|array $nodes): string
 {
     $baseIndent = '    ';
     $stringDiffBuilder = function ($nodes, $depth = 1) use (&$stringDiffBuilder, $baseIndent) {
@@ -65,5 +83,5 @@ function getStylishFormat(string|array $node): string
         $res = ["{", ...$acc, "{$bracketIndent}}"];
         return implode("\n", $res);
     };
-    return $stringDiffBuilder($node) . "\n";
+    return $stringDiffBuilder($nodes) . "\n";
 }

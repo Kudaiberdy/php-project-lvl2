@@ -6,6 +6,11 @@ use function Gendiff\Formatters\Stylish\getStylishFormat;
 use function Gendiff\Formatters\Json\getJsonFormat;
 use function Gendiff\Formatters\Plain\getPlainFormat;
 
+/**
+ * @param array $arrayOfNodes
+ * @param string $format
+ * @return string
+ */
 function buildDiff(array $arrayOfNodes, string $format): string
 {
     $typeNode = [

@@ -2,6 +2,10 @@
 
 namespace Gendiff\DiffCalculator;
 
+/**
+ * @param array $arr
+ * @return array
+ */
 function stringifyValues(array $arr): array
 {
     $convertedValues = [];
@@ -17,6 +21,11 @@ function stringifyValues(array $arr): array
     return $convertedValues;
 }
 
+/**
+ * @param array $arrayFirst
+ * @param array $arraySecond
+ * @return array
+ */
 function calculateDiff(array $arrayFirst, array $arraySecond): array
 {
     $fileOne = stringifyValues($arrayFirst);
@@ -29,7 +38,13 @@ function calculateDiff(array $arrayFirst, array $arraySecond): array
     }, []);
 }
 
-function getTypesOfNodes($key, array $firstArray, array $secondArray): array
+/**
+ * @param string $key
+ * @param array $firstArray
+ * @param array $secondArray
+ * @return array
+ */
+function getTypesOfNodes(string $key, array $firstArray, array $secondArray): array
 {
     if (array_key_exists($key, $firstArray) === false) {
         return [

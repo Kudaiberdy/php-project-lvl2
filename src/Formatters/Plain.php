@@ -2,7 +2,11 @@
 
 namespace Gendiff\Formatters\Plain;
 
-function getPlainFormat(array $arrayOfNodes): string
+/**
+ * @param array $arrayOfNodes
+ * @return string
+ */
+function getPlainFormat(array $nodes): string
 {
     return [];
 }

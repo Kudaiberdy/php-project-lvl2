@@ -6,6 +6,9 @@ use Docopt;
 
 use function Gendiff\Runner\run;
 
+/**
+ * @return void
+ */
 function runCli(): void
 {
     $doc = <<<DOC
