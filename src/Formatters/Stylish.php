@@ -1,6 +1,6 @@
 <?php
 
-namespace Gendiff\Formatters\JsonStringifyFormat;
+namespace Gendiff\Formatters\Stylish;
 
 function buildString(string $key, string|array $value, string $indent, int $depth, string $signNode = ' '): string
 {
@@ -45,7 +45,7 @@ function buildStringNodeByType(string|array $node, string $tabIndent, int $depth
     }
 }
 
-function stringify(string|array $node): string
+function getStylishFormat(string|array $node): string
 {
     $baseIndent = '    ';
     $stringDiffBuilder = function ($nodes, $depth = 1) use (&$stringDiffBuilder, $baseIndent) {

@@ -2,7 +2,7 @@
 
 namespace Gendiff\Runner;
 
-use function Gendiff\DiffGenerator\getDifference;
+use function Gendiff\DiffCalculator\calculateDiff;
 use function Gendiff\DiffBuilder\buildDiff;
 use function Gendiff\Parser\parseFile;
 
@@ -10,7 +10,7 @@ function run(string $pathToFirstFile, string $pathToSecondFile, string $format):
 {
     $dataFirstFile = parseFile($pathToFirstFile);
     $dataSecondFile = parseFile($pathToSecondFile);
-    $arrayOfDiff = getDifference($dataFirstFile, $dataSecondFile);
+    $arrayOfDiff = calculateDiff($dataFirstFile, $dataSecondFile);
 
     return buildDiff($arrayOfDiff, $format);
 }

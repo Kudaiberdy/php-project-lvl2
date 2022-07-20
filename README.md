@@ -7,11 +7,11 @@
 ### Difference calculator
 
 ### About project:
-**Difference calculator** is a program with command-line interface (CLI) that generates a difference between two data structures or configuration files.
+**Difference calculator** is a program with command-line interface (CLI) that generates a difference between two data structures or configuration files json, yaml format.
 
 ___
 ### Require:
-**PHP > v7.4**
+* #### PHP > v7.4
 
 ___
 ### Install:
@@ -25,13 +25,7 @@ git clone git@github.com:Kudaiberdy/php-project-lvl2.git
 composer create-project kudaiberdy/node_diff_generator
 ```
 
-[//]: # (#### Like a package:)
-
-[//]: # (```shell)
-
-[//]: # ()
-[//]: # (```)
 ___
-### Example of work:
+### Usage example:
 
 [![asciicast](https://asciinema.org/a/509526.svg)](https://asciinema.org/a/509526)

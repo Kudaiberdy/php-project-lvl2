@@ -1,6 +1,6 @@
 <?php
 
-namespace Gendiff\DiffGenerator;
+namespace Gendiff\DiffCalculator;
 
 function stringifyValues(array $arr): array
 {
@@ -17,7 +17,7 @@ function stringifyValues(array $arr): array
     return $convertedValues;
 }
 
-function getDifference(array $arrayFirst, array $arraySecond): array
+function calculateDiff(array $arrayFirst, array $arraySecond): array
 {
     $fileOne = stringifyValues($arrayFirst);
     $fileTwo = stringifyValues($arraySecond);
@@ -49,7 +49,7 @@ function getTypesOfNodes($key, array $firstArray, array $secondArray): array
         return [
             'type' => 'parent',
             'key' => $key,
-            'innerItem' => getDifference($firstArray[$key], $secondArray[$key])
+            'innerItem' => calculateDiff($firstArray[$key], $secondArray[$key])
         ];
     }
     if ($firstArray[$key] === $secondArray[$key]) {
